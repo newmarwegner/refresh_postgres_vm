@@ -17,7 +17,8 @@ def refresh_vm():
     for vm in views_to_refresh:
         sql = f"refresh materialized view concurrently {vm};"
         cur.execute(sql)
-    
+        conn.commit()
+                            
     conn.close()
     
     return
